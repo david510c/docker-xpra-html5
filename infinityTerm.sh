@@ -3,5 +3,6 @@
 while true
 do
     xterm
+    firefox
     sleep 1
 done
