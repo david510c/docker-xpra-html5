@@ -2,6 +2,10 @@ FROM ubuntu:bionic
 
 # install xpra
 RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y curl gnupg && \
+    curl -fsSL http://winswitch.org/gpg.asc | apt-key add - && \
+    echo "deb http://winswitch.org/ bionic main" > /etc/apt/sources.list.d/winswitch.list && \
+    apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y xpra xvfb xterm
 
 # install all X apps here   
