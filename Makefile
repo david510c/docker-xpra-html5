@@ -1,8 +1,8 @@
 # Substitute your own docker index username, if you like.
-DOCKER_USER=lanrat
+DOCKER_USER=david510c
 
 # Change this to suit your needs.
-TAG:=xpra-html5
+TAG:=Firefox
 
 all: build
 
