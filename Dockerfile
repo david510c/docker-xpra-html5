@@ -1,11 +1,10 @@
-FROM ubuntu:zesty
-MAINTAINER Ian Foster <ian@vorsk.com>
+FROM ubuntu:bionic
 
 # install xpra
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y wget && \
     wget -O - http://winswitch.org/gpg.asc | apt-key add - && \
-    echo "deb http://winswitch.org/ zesty main" > /etc/apt/sources.list.d/xpra.list && \
+    echo "deb http://winswitch.org/ bionic main" > /etc/apt/sources.list.d/winswitch.list && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y xpra xvfb xterm && \
     apt-get clean && \ 
@@ -18,7 +17,7 @@ RUN adduser --disabled-password --gecos "User" --uid 1000 user
 
 # install all X apps here
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y firefox && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y firefox chromium-browser && \
     apt-get clean && \ 
     rm -rf /var/lib/apt/lists/*
 
