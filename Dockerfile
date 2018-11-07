@@ -6,20 +6,13 @@ RUN apt-get update && \
     curl -fsSL http://winswitch.org/gpg.asc | apt-key add - && \
     echo "deb http://winswitch.org/ bionic main" > /etc/apt/sources.list.d/winswitch.list && \
     apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y xpra xvfb xterm && \
-    apt-get clean && \ 
-    rm -rf /var/lib/apt/lists/*
+    DEBIAN_FRONTEND=noninteractive apt-get install -y xpra xvfb xterm firefox chromium-browser libavcodec-extra && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ADD infinityTerm.sh /usr/local/bin/infinityTerm
 
 # non-root user
 RUN adduser --disabled-password --gecos "User" --uid 1000 user
-
-# install all X apps here
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y firefox chromium-browser libavcodec-extra && \
-    apt-get clean && \ 
-    rm -rf /var/lib/apt/lists/*
 
 USER user
 
